@@ -5,7 +5,7 @@ export class Gasto {
     #monto
 
     constructor(nombre, monto) {
-        this.#nombre = nombre
+        this.#nombre = validarNombres(nombre, regex)
         this.#monto = monto
     }
 

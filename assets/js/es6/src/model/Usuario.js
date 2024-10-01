@@ -1,3 +1,10 @@
+import { Validacion } from './Validacion.js'
+import {
+    REGEX_NOMBRES,
+    REGEX_RUT,
+    REGEX_TELEFONO
+} from '../util/constantes.js'
+
 
 
 export class Usuario {
@@ -21,12 +28,12 @@ export class Usuario {
         email, 
         presupuesto, 
         gastos) {
-            this.#nombre = nombre
-            this.#apellidoP = apellidoP
-            this.#apellidoM = apellidoM
-            this.#rutNumero = rutNumero
+            this.#nombre = Validacion.nombre(nombre, REGEX_NOMBRES)
+            this.#apellidoP = Validacion.nombre(apellidoP, REGEX_NOMBRES)
+            this.#apellidoM = Validacion.nombre(apellidoM, REGEX_NOMBRES)
+            this.#rutNumero = Validacion.rut(rutNumero, REGEX_RUT)
             this.#rutDV = rutDv
-            this.#telefono = telefono
+            this.#telefono = Validacion.telefono(telefono, REGEX_TELEFONO)
             this.#email = email
             this.#presupuesto = presupuesto
             this.#gastos = gastos
@@ -34,5 +41,10 @@ export class Usuario {
 
     get nombreCompleto() {
         return `${this.#nombre} ${this.#apellidoP} ${this.#apellidoM}`;
+    }
+
+
+    validarNombres() {
+
     }
 }
