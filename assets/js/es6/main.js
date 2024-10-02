@@ -5,8 +5,8 @@ const usuario = new Usuario(
     'Dino', 
     'Alvarez', 
     'Lopez', 
-    '1236547', 
-    '5', 
+    '18569777', 
+    '0', 
     '+56998906683', 
     'mail@erxample.com', 
     150000, 
@@ -16,5 +16,13 @@ const usuario = new Usuario(
 const gasto = new Gasto('sopaipa', 500)
 
 console.log(gasto.getAllProperties())
+
+const cambiarNombre = () => {   
+    const resultTask = (usuario.nombre = "659");
+    console.log(resultTask)
+    return resultTask
+}
+
+cambiarNombre()
 
 console.log(usuario.nombreCompleto)

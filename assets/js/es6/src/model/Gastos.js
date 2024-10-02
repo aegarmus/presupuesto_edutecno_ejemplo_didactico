@@ -1,12 +1,13 @@
-
+import { Validar } from './Validacion.js'
+import { REGEX_NOMBRES } from '../util/constantes.js'
 
 export class Gasto {
     #nombre
     #monto
 
     constructor(nombre, monto) {
-        this.#nombre = validarNombres(nombre, regex)
-        this.#monto = monto
+        this.#nombre = Validar.nombre(nombre, REGEX_NOMBRES)
+        this.#monto = Validar.monto(monto)
     }
 
     get nombre() {
@@ -18,11 +19,19 @@ export class Gasto {
     }
 
     set nombre(nuevoNombre) {
-        this.#nombre = nuevoNombre
+        try {
+            this.#nombre = Validar.nombre(nuevoNombre)
+        } catch(error) {
+            console.error('No pudimos modificar el nombre del gasto', error)
+        }
     }
 
     set monto(nuevoMonto) {
-        this.#monto = nuevoMonto
+        try {
+            this.#monto = Validar.monto(nuevoMonto)  
+        } catch (error) {   
+            console.error('No pudimos modificar el monto',  error)
+        }
     }
 
 

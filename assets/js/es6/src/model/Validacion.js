@@ -1,4 +1,6 @@
-export class Validacion {
+import { REGEX_EMAIL } from "../util/constantes.js";
+
+export class Validar {
     static nombre(nombre, regex) {
         if (nombre === null || nombre === undefined) return "No otorgado";
         if (!regex.test(nombre))
@@ -19,6 +21,10 @@ export class Validacion {
         return rutNormalizado
     }
 
+    static email(email) {
+      if(!REGEX_EMAIL.test(email)) throw new Error('El email no es valido')
+      return email
+    }
 
 
     static monto(monto) {
@@ -30,9 +36,39 @@ export class Validacion {
       return montoNormalizado
     }
 
-    static gasto(gasto) {
+    static gastos(gasto) {
       if(!(gasto instanceof Gasto)) throw new Error('El gasto debe ser una instancia de Gasto')
       return gasto
     }
     
+    static calcularDigitoVerificador(numeroRut) {
+      let acumulador = 0;
+      let multiplicador = 2
+
+      for( let i = numeroRut.length - 1; i >= 0; i-- ) {
+        acumulador += multiplicador * parseInt(numeroRut.charAt(i))
+        multiplicador = multiplicador === 7 ? 2 : multiplicador + 1
+
+        /* if(multiplicador === 7 ) {
+          multiplicador = 2
+        } else {
+          multiplicador + 1 
+        } */
+      }
+
+      const digitoEvaluador = 11 - (acumulador % 11)
+
+      if(digitoEvaluador === 11) return '0'
+      if(digitoEvaluador === 10) return 'k'
+      return digitoEvaluador.toString()
+    }
+
+    static digitoVerificador(numeroRut, rutDV) {
+      const dvCalculado = this.calcularDigitoVerificador(numeroRut);
+      if(dvCalculado.toLocaleLowerCase() !== rutDV.toLocaleLowerCase()) {
+        throw new Error('Digito Verificador no válido')
+      }
+
+      return rutDV
+    }
 }
