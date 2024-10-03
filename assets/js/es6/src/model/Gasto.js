@@ -1,4 +1,4 @@
-import { Validar } from './Validacion.js'
+import { Validar } from '../util/Validacion.js'
 import { REGEX_NOMBRES } from '../util/constantes.js'
 
 export class Gasto {

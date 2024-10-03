@@ -1,4 +1,4 @@
 export * from './Gasto.js'
-export * from './InterfaceDom.js'
+export * from '../dom/InterfaceDom.js'
 export * from './Usuario.js'
-export * from './Validacion.js'
+export * from '../util/Validacion.js'

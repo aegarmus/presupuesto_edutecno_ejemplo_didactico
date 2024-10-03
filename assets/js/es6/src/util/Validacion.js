@@ -1,4 +1,4 @@
-import { REGEX_EMAIL } from "../util/constantes.js";
+import { REGEX_EMAIL } from "./constantes.js";
 
 export class Validar {
     static nombre(nombre, regex) {

@@ -2,7 +2,7 @@ import { Usuario, Gasto, InterfaceDom } from './src/model/index.js'
 import { REGION, DIVISA } from './src/util/constantes.js'
 
 const userForm = document.querySelector('#user-form')
-const gastoForm = document.querySelector('#gasto-form')
+const gastoForm = document.querySelector("#gastos-form");
 
 const selectUsers = document.querySelector('#select-usuario')
 
@@ -40,5 +40,23 @@ userForm.addEventListener('submit', (event) => {
     } catch(error) {
         console.error(error)
         alert(`${error}`)
+    }
+})
+
+gastoForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const usuarioSeleccionado = usuarios[selectUsers.selectedIndex]
+
+    const nombreGasto = document.querySelector('#nombre-gasto').value
+    const montoGasto = document.querySelector('#monto-gasto').value
+
+    try {
+        const gasto = new Gasto(nombreGasto, montoGasto)
+        usuarioSeleccionado.agregarGasto(gasto)
+        gastoForm.reset()
+        
+    } catch (error) {
+        
     }
 })
