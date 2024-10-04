@@ -1,5 +1,7 @@
-class UsuarioDom extends InterfaceDom {
-  static actualizarUsuarioDom(usuarioSelecionado, usuarios) {
+import { InterfaceDom } from "./InterfaceDom.js";
+
+export class UsuarioDom extends InterfaceDom {
+  static actualizarUsuario(usuarioSelecionado, usuarios) {
     usuarioSelecionado.innerHTML = "";
 
     usuarios.forEach((usuario, index) => {

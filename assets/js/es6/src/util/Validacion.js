@@ -1,3 +1,4 @@
+import { Gasto } from '../model/index.js'
 import { REGEX_EMAIL } from "./constantes.js";
 
 export class Validar {

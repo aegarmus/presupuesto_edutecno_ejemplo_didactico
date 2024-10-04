@@ -1,6 +1,4 @@
 export class InterfaceDom {
-    
-
     static formatearDivisaDom(numero, region, divisa) {
         const formatoDivisa = new Intl.NumberFormat(region, {
             style: 'currency',
@@ -16,6 +14,10 @@ export class InterfaceDom {
         contenedor.innerHTML = contenido
     }
 
+    static actualizarSaldoTotal(usuario, contenedor, region, divisa) {
+        const saldoTotal = this.formatearDivisaDom(usuario.calcularSaldoTotal(), region, divisa)
+        this.actualizarContenidoHTML(contenedor, saldoTotal)
+    }
 }
 
 
