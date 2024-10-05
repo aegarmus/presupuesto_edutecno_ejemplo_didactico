@@ -22,6 +22,15 @@ export class GastoDom extends InterfaceDom {
 
       contenedor.appendChild(filaTabla);
     });
+
+    document.querySelectorAll(".btn-editar").forEach((button) => {
+      button.addEventListener("click", (event) => {
+
+        console.log('me ejecuto')
+        const index = event.target.dataset.index;
+        this.abrirModalEditarGasto(usuario, index);
+      });
+    });
   }
 
   static actualizarTotalGastos(usuario, contenedor, region, divisa) {
@@ -29,5 +38,19 @@ export class GastoDom extends InterfaceDom {
     const totalGastos = this.formatearDivisaDom(usuario.calcularGastoTotal(), region, divisa)
     this.actualizarContenidoHTML(contenedor, totalGastos)
     
+  }
+
+  static abrirModalEditarGasto(usuario, index) {
+    const gasto = usuario.gastos[index]
+    if(!gasto) return
+
+    const modal = document.querySelector("#modal-editar-gasto");
+    const nombreInput = document.querySelector("#editar-nombre-gasto");
+    const montoInput = document.querySelector('#editar-monto-gasto');
+
+    nombreInput.value = gasto.nombre
+    montoInput.value = gasto.monto
+
+    modal.style.display = 'block'
   }
 }

@@ -2,6 +2,7 @@ import { Gasto } from '../model/index.js'
 import { REGEX_EMAIL } from "./constantes.js";
 
 export class Validar {
+
     static nombre(nombre, regex) {
         if (nombre === null || nombre === undefined) return "No otorgado";
         if (!regex.test(nombre))

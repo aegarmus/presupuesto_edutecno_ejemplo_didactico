@@ -87,6 +87,22 @@
             <p>Gasto Total: <span id="gasto-total">0</span></p>
             <p>Saldo Total: <span id="saldo-total">0</span></p>
         </section>
+
+        <div id="modal-editar-gasto" class="modal">
+            <div class="modal-contenido">
+                <h2>Editar Gastos</h2>
+                <form id="editar-gasto-form">
+                    <label for="editar-nombre-gasto">Nombre</label>
+                    <input type="text" id="editar-nombre-gasto" required>
+
+                    <label for="editar-monto-gasto">Monto</label>
+                    <input type="number" id="editar-monto-gasto" required>
+
+                    <button class="btn">Guardar Cambios</button>
+                    <button class="btn">Cancelar</button>
+                </form>
+            </div>
+        </div>
         
     </main>
     
